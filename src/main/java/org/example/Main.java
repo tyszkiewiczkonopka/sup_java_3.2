@@ -3,7 +3,7 @@ import java.util.*;
 public class Main {
     public static void main(String[] args) {
 
-        Map<String, String> properties = new HashMap();
+        Map<String, String> properties = new HashMap<>();
         properties.put("login", "Angelina");
         properties.put("password", "angelinaInHollywood123");
         properties.put("title", "Salt");
@@ -14,11 +14,8 @@ public class Main {
         Set<String> sensitiveKeysSet = new HashSet<>(List.of(sensitiveKeys));
 
         properties.entrySet().stream()
-                .filter(entry -> sensitiveKeysSet.contains(entry.getKey()))
-                .forEach(entry -> entry.setValue("********"));
+                .map(entry -> sensitiveKeysSet.contains(entry.getKey()) ? "**********" : entry.getKey())
+                .forEach(System.out::println);
 
-        for (Map.Entry<String, String> entry : properties.entrySet()) {
-            System.out.println(entry.getKey() + ": " + entry.getValue());
-        }
     }
 }
