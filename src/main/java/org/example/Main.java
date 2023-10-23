@@ -16,6 +16,5 @@ public class Main {
         properties.entrySet().stream()
                 .map(entry -> sensitiveKeysSet.contains(entry.getKey()) ? entry.getKey() + ": " + "**********" : (entry.getKey() + ": " + entry.getValue()))
                 .forEach(System.out::println);
-
     }
 }
