@@ -13,8 +13,10 @@ public class Main {
         String[] sensitiveKeys = {"login", "password", "url"};
         Set<String> sensitiveKeysSet = new HashSet<>(List.of(sensitiveKeys));
 
+        String maskingSymbol = "**********";
+
         properties.entrySet().stream()
-                .map(entry -> sensitiveKeysSet.contains(entry.getKey()) ? entry.getKey() + ": " + "**********" : (entry.getKey() + ": " + entry.getValue()))
+                .map(entry -> sensitiveKeysSet.contains(entry.getKey()) ? entry.getKey() + ": " + maskingSymbol : (entry.getKey() + ": " + entry.getValue()))
                 .forEach(System.out::println);
     }
 }
