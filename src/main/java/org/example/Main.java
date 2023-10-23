@@ -14,7 +14,7 @@ public class Main {
         Set<String> sensitiveKeysSet = new HashSet<>(List.of(sensitiveKeys));
 
         properties.entrySet().stream()
-                .map(entry -> sensitiveKeysSet.contains(entry.getKey()) ? "**********" : entry.getKey())
+                .map(entry -> sensitiveKeysSet.contains(entry.getKey()) ? entry.getKey() + ": " + "**********" : (entry.getKey() + ": " + entry.getValue()))
                 .forEach(System.out::println);
 
     }
