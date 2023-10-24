@@ -1,22 +1,15 @@
 package org.example;
-import java.util.*;
+
+
+import java.util.Map;
+import java.util.Set;
+
 public class Main {
     public static void main(String[] args) {
+        Map<String, String> properties = Properties.initializeProperties();
+        Set<String> sensitiveKeys = Properties.initializeSensitiveKeys();
 
-        Map<String, String> properties = new HashMap<>();
-        properties.put("login", "Angelina");
-        properties.put("password", "angelinaInHollywood123");
-        properties.put("title", "Salt");
-        properties.put("url", "www.angelina.hollywood");
-        properties.put("errorMessage", "file has not been found");
-
-        String[] sensitiveKeys = {"login", "password", "url"};
-        Set<String> sensitiveKeysSet = new HashSet<>(List.of(sensitiveKeys));
-
-        String maskingSymbol = "**********";
-
-        properties.entrySet().stream()
-                .map(entry -> sensitiveKeysSet.contains(entry.getKey()) ? entry.getKey() + ": " + maskingSymbol : (entry.getKey() + ": " + entry.getValue()))
+        Masker.maskSensitiveKeys(properties,sensitiveKeys)
                 .forEach(System.out::println);
     }
 }
