@@ -9,7 +9,7 @@ public class Main {
         Map<String, String> properties = Properties.initializeProperties();
         Set<String> sensitiveKeys = Properties.initializeSensitiveKeys();
 
-        Masker.maskSensitiveKeys(properties,sensitiveKeys)
-                .forEach(System.out::println);
+        Masker.printMaskedProperties(properties,sensitiveKeys);
+
     }
 }
