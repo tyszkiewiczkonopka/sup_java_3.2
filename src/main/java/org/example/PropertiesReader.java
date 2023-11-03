@@ -2,8 +2,9 @@ package org.example;
 
 import java.util.*;
 
-public class Properties {
-    public static Map<String, String> initializeProperties() {
+public class PropertiesReader {
+
+    public Map<String, String> initializeProperties() {
         Map<String, String> properties = new HashMap<>();
         properties.put("login", "Angelina");
         properties.put("password", "angelinaInHollywood123");
@@ -13,8 +14,4 @@ public class Properties {
         return properties;
     }
 
-    public static Set<String> initializeSensitiveKeys() {
-        String[] sensitiveKeys = {"login", "password", "url"};
-        return new HashSet<>(List.of(sensitiveKeys));
-    }
 }
